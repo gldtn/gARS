@@ -1,6 +1,6 @@
-gldtn Article and Review System
+## gldtn Article and Review System
 
-Installation:
+## Installation:
 
 1. Unpack gARS.zip to your local computer.
 2. Upload all the contents of the 'UPLOAD' folder to it's respective directory.
