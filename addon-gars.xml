@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="gars" title="gARS" version_string="0.0.2" version_id="1" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation>
+    <navigation navigation_id="gldtn_gars" parent_navigation_id="setup" display_order="10000" link="" admin_permission_id="option" debug_only="0" hide_no_children="0"/>
+    <navigation navigation_id="gldtn_gars_options" parent_navigation_id="gldtn_gars" display_order="10" link="options/list/gars_options" admin_permission_id="option" debug_only="0" hide_no_children="0"/>
+  </admin_navigation>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates>
+    <template title="gars_option_list_option_multiple"><![CDATA[<xen:selectunit size="10" multiple="true" label="{$preparedOption.title}" name="{$fieldPrefix}[{$preparedOption.option_id}]" value="{xen:raw $preparedOption.option_value}" 
+    hint="{$preparedOption.hint}">
+	
+    	<xen:options source="$formatParams" selected="{$preparedOption.formatParams.selected}"/>
+    	<xen:explain>{xen:raw $preparedOption.explain}</xen:explain>
+    	<xen:html>
+    		<input type="hidden" name="{$listedFieldName}" value="{$preparedOption.option_id}" />
+    		{xen:raw $editLink}
+    	</xen:html>
+</xen:selectunit>]]></template>
+  </admin_templates>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="gldtn_GARS_Listener_Listener" callback_method="extendForumController" active="1" description="Extend Forum Controller (Thread Sort)"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <optiongroups>
+    <group group_id="gars_options" display_order="2147483647" debug_only="0"/>
+    <option option_id="gars_articleType_nodeId" edit_format="callback" data_type="array" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params>gldtn_GARS_Option_ForumMultipleChooser::renderSelectM</edit_format_params>
+      <sub_options>*</sub_options>
+      <relation group_id="gars_options" display_order="1"/>
+    </option>
+    <option option_id="gars_strainType_nodeId" edit_format="callback" data_type="array" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params>gldtn_GARS_Option_ForumMultipleChooser::renderSelectM</edit_format_params>
+      <sub_options>*</sub_options>
+      <relation group_id="gars_options" display_order="2"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="admin_navigation_gldtn_gars" version_id="1" version_string="0.0.2"><![CDATA[gARS]]></phrase>
+    <phrase title="admin_navigation_gldtn_gars_options" version_id="1" version_string="0.0.2"><![CDATA[Options]]></phrase>
+    <phrase title="gars_articleType_order_threads_in" version_id="1" version_string="0.0.1"><![CDATA[Order articles in]]></phrase>
+    <phrase title="gars_articleType_post_new_thread" version_id="1" version_string="0.0.1"><![CDATA[Post New Article]]></phrase>
+    <phrase title="gars_articleType_showing_threads_x_to_y_of_z" version_id="1" version_string="0.0.1"><![CDATA[Showing articles {start} to {end} of {total}]]></phrase>
+    <phrase title="gars_articleType_sidebar_filter" version_id="1" version_string="0.0.1"><![CDATA[Filter Articles]]></phrase>
+    <phrase title="gars_articleType_sort_threads_by" version_id="1" version_string="0.0.1"><![CDATA[Sort articles by]]></phrase>
+    <phrase title="gars_articleType_there_no_threads_to_display" version_id="1" version_string="0.0.1"><![CDATA[There are no articles to display.]]></phrase>
+    <phrase title="gars_articleType_thread_creation_time" version_id="1" version_string="0.0.1"><![CDATA[Article creation time]]></phrase>
+    <phrase title="gars_articleType_thread_display_options" version_id="1" version_string="0.0.1"><![CDATA[Article Display Options]]></phrase>
+    <phrase title="gars_articleType_title" version_id="1" version_string="0.0.1"><![CDATA[Articles]]></phrase>
+    <phrase title="gars_attachment_title" version_id="1" version_string="0.0.1"><![CDATA[Attachments & Photos]]></phrase>
+    <phrase title="gars_strainType_order_threads_in" version_id="1" version_string="0.0.1"><![CDATA[Order strains in]]></phrase>
+    <phrase title="gars_strainType_post_new_thread" version_id="1" version_string="0.0.1"><![CDATA[Post New Strain]]></phrase>
+    <phrase title="gars_strainType_showing_threads_x_to_y_of_z" version_id="1" version_string="0.0.1"><![CDATA[Showing strains {start} to {end} of {total}]]></phrase>
+    <phrase title="gars_strainType_sidebar_filter" version_id="1" version_string="0.0.1"><![CDATA[Filter Strains]]></phrase>
+    <phrase title="gars_strainType_sort_threads_by" version_id="1" version_string="0.0.1"><![CDATA[Sort strains by]]></phrase>
+    <phrase title="gars_strainType_there_no_threads_to_display" version_id="1" version_string="0.0.1"><![CDATA[There are no strains to display.]]></phrase>
+    <phrase title="gars_strainType_thread_creation_time" version_id="1" version_string="0.0.1"><![CDATA[Strain creation time]]></phrase>
+    <phrase title="gars_strainType_thread_display_options" version_id="1" version_string="0.0.1"><![CDATA[Strain Display Options]]></phrase>
+    <phrase title="gars_strainType_title" version_id="1" version_string="0.0.1"><![CDATA[Strains]]></phrase>
+    <phrase title="option_gars_articleType_nodeId" version_id="1" version_string="0.0.1"><![CDATA[Article Type Nodes]]></phrase>
+    <phrase title="option_gars_articleType_nodeId_explain" version_id="1" version_string="0.0.1"><![CDATA[Which forums would you like to use the <strong>Article Type</strong> view?]]></phrase>
+    <phrase title="option_gars_strainType_nodeId" version_id="1" version_string="0.0.1"><![CDATA[Strain Type Nodes]]></phrase>
+    <phrase title="option_gars_strainType_nodeId_explain" version_id="1" version_string="0.0.1"><![CDATA[Which forums would you like to use the <strong>strain type</strong> view?]]></phrase>
+    <phrase title="option_group_gars_options" version_id="1" version_string="0.0.1"><![CDATA[gARS]]></phrase>
+    <phrase title="option_group_gars_options_description" version_id="1" version_string="0.0.1"><![CDATA[gldtn Article and Review System]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="gars_articleType_sidebar_filter" version_id="1" version_string="0.0.1"><![CDATA[<xen:if hascontent="true">	
+	<xen:require css="sidebar_share_page.css" />
+	<div class="section infoBlock sharePage">
+		<div class="secondaryContent">
+			<h3>{xen:phrase gars_articleType_sidebar_filter}</h3>
+			<xen:contentcheck>
+			<form action="{xen:link 'forums', $forum}" method="post">
+				<div class="controlGroup">
+					<label for="ctrl_order"><p>{xen:phrase gars_articleType_sort_threads_by}:</p></label>
+					<select name="order" id="ctrl_order" class="textCtrl">
+						<option value="last_post_date" {xen:selected "{$order} == 'last_post_date'"}>{xen:phrase last_message_time}</option>
+						<option value="post_date" {xen:selected "{$order} == 'post_date'"}>{xen:phrase gars_articleType_thread_creation_time}</option>
+						<option value="title" {xen:selected "{$order} == 'title'"}>{xen:phrase title_alphabetical}</option>
+						<option value="reply_count" {xen:selected "{$order} == 'reply_count'"}>{xen:phrase number_of_replies}</option>
+						<option value="view_count" {xen:selected "{$order} == 'view_count'"}>{xen:phrase number_of_views}</option>
+						<option value="first_post_likes" {xen:selected "{$order} == 'first_post_likes'"}>{xen:phrase first_message_likes}</option>
+					</select>
+				</div>
+
+				<div class="controlGroup">
+					<label for="ctrl_direction"><p>{xen:phrase gars_articleType_order_threads_in}:</p></label>
+					<select name="direction" id="ctrl_direction" class="textCtrl">
+						<option value="desc" {xen:selected "{$orderDirection} == 'desc'"}>{xen:phrase descending_order}</option>
+						<option value="asc" {xen:selected "{$orderDirection} == 'asc'"}>{xen:phrase ascending_order}</option>
+					</select>
+				</div>
+				
+				<xen:if is="{$forum.prefixCache}">
+					<div class="controlGroup">
+						<label for="ctrl_prefix_id"><p>{xen:phrase prefix}:</p></label>
+						<select name="prefix_id" id="ctrl_prefix_id" class="textCtrl">
+							<option value="0" {xen:selected '!{$displayConditions.prefix_id}'}>({xen:phrase any})</option>
+							<xen:foreach loop="$forum.prefixCache" key="$prefixGroupId" value="$prefixes">
+								<xen:if is="{$prefixGroupId}">
+									<optgroup label="{xen:helper threadPrefixGroup, $prefixGroupId}">
+									<xen:foreach loop="$prefixes" value="$prefixId">
+										<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+									</xen:foreach>
+									</optgroup>
+								<xen:else />
+									<xen:foreach loop="$prefixes" value="$prefixId">
+										<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+									</xen:foreach>
+								</xen:if>
+							</xen:foreach>
+						</select>
+					</div>
+				</xen:if>
+
+				<div class="buttonGroup">
+					<input type="submit" class="button primary" value="{xen:phrase set_options}" />
+					<input type="reset" class="button" value="{xen:phrase cancel}" />
+				</div>
+				
+					<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+			</form>
+			</xen:contentcheck>
+		</div>
+	</div>
+</xen:if>]]></template>
+    <template title="gars_articleType_thread_list" version_id="1" version_string="0.0.1"><![CDATA[<xen:require css="discussion_list.css" />
+<xen:require js="js/xenforo/discussion_list.js" />
+<xen:require css="gars_thread_list.css" />
+
+<!-- sidebar -->
+<aside>
+	<div class="sidebar">
+		<xen:hook name="page_container_sidebar">
+		<xen:include template="ad_sidebar_top" />
+		<xen:include template="gars_articleType_sidebar_filter"></xen:include>
+		<xen:include template="sidebar_share_page">
+			<xen:set var="$url">{xen:link canonical:index}</xen:set>
+		</xen:include>
+		{xen:raw $sidebar}
+		<xen:include template="ad_sidebar_bottom" />
+		</xen:hook>
+	</div>
+</aside>
+
+<form action="{xen:link inline-mod/thread/switch}" method="post"
+	class="DiscussionList InlineModForm"
+	data-cookieName="threads"
+	data-controls="#InlineModControls"
+	data-imodOptions="#ModerationSelect option">
+	
+	<xen:if hascontent="true">
+		<div class="discussionListFilters secondaryContent">
+			<h3 class="filtersHeading">{xen:phrase filters}:</h3>
+			<dl class="pairsInline filterPairs">
+			<xen:contentcheck>
+			<xen:if is="{$displayConditions.prefix_id}">
+				<dt>{xen:phrase prefix}:</dt>
+				<dd><a href="{xen:link forums, $forum, '_params={$pageNavParams}', 'prefix_id='}" class="removeFilter Tooltip" title="{xen:phrase remove_filter}">{xen:helper threadPrefix, $displayConditions.prefix_id, escaped, ''} <span class="gadget">x</span></a></dd>
+			</xen:if>
+			</xen:contentcheck>
+			</dl>
+			<dl class="pairsInline removeAll">
+				<dt>{xen:phrase remove_all_filters}:</dt>
+				<dd><a href="{xen:link forums, $forum, 'order={$pageNavParams.order}', 'direction={$pageNavParams.direction}'}" class="removeAllFilters Tooltip" title="{xen:phrase remove_all_filters}">x</a></dd>
+			</dl>
+		</div>
+	</xen:if>
+
+	<dl class="sectionHeaders">
+		<dt class="posterAvatar"><a><span>{xen:phrase sort_by}:</span></a></dt>
+		<dd class="main">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.title}'}" class="title"><span>{xen:phrase gars_articleType_title}{xen:helper sortArrow, $order, $orderDirection, title}</span></a>
+			<!--<a href="{xen:link forums, $forum, '_params={$orderParams.post_date}'}" class="postDate"><span>{xen:phrase start_date}{xen:helper sortArrow, $order, $orderDirection, post_date}</span></a>-->
+		</dd>
+		<!--<dd class="stats">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.reply_count}'}" class="major"><span>{xen:phrase replies}{xen:helper sortArrow, $order, $orderDirection, reply_count}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.view_count}'}" class="minor"><span>{xen:phrase views}{xen:helper sortArrow, $order, $orderDirection, view_count}</span></a>
+		</dd>
+		<dd class="lastPost"><a href="{xen:link forums, $forum, '_params={$orderParams.last_post_date}'}"><span>{xen:phrase last_message}{xen:helper sortArrow, $order, $orderDirection, last_post_date}</span></a></dd>-->
+<dd><div class="linkGroup SelectionCountContainer">
+		<xen:comment><xen:include template="forum_view_legacy_controls" /></xen:comment>
+	</div></dd>
+	</dl>
+
+	<ol class="discussionListItems">
+	<xen:if is="{$stickyThreads} OR {$threads}">
+		<xen:set var="$showLastPageNumbers">1</xen:set>
+		<xen:set var="$linkPrefix">1</xen:set>
+	
+		<xen:hook name="thread_list_stickies">
+		<xen:foreach loop="$stickyThreads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:include template="ad_thread_list_below_stickies" />
+		
+		<xen:hook name="thread_list_threads">
+		<xen:foreach loop="$threads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:edithint template="thread_list_item_edit" />
+	<xen:else />
+		<li class="primaryContent">{xen:phrase gars_articleType_there_no_threads_to_display}</li>
+	</xen:if>
+	</ol>
+
+	<xen:if is="{$totalThreads} OR {$inlineModOptions}">
+		<div class="sectionFooter InlineMod SelectionCountContainer">
+			<xen:if is="{$totalThreads}"><span class="contentSummary">{xen:phrase gars_articleType_showing_threads_x_to_y_of_z, 'start={xen:number $threadStartOffset}', 'end={xen:number $threadEndOffset}', 'total={xen:number $totalThreads}'}</span></xen:if>
+
+			<xen:if is="{$inlineModOptions}">
+				<xen:include template="inline_mod_controls_thread" />
+			</xen:if>
+		</div>
+	</xen:if>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<xen:include template="preview_tooltip" />]]></template>
+    <template title="gars_attached_files" version_id="1" version_string="0.0.1"><![CDATA[<xen:require css="gars_attached_files.css" />
+
+<div class="attachedFiles">
+	<h4 class="attachedFilesHeader">{xen:phrase gars_attachment_title}</h4>
+	<ul class="attachmentList SquareThumbs"
+		data-thumb-height="{xen:calc '{$xenOptions.attachmentThumbnailDimensions} / 2'}"
+		data-thumb-selector="div.thumbnail > a">
+		<xen:foreach loop="$post.attachments" value="$attachment">
+			<li class="attachment{xen:if {$attachment.thumbnailUrl}, ' image'}" title="{$attachment.filename}">
+				<div class="boxModelFixer primaryContent">
+					
+					<div class="thumbnail">
+						<xen:if is="{$attachment.thumbnailUrl} AND {$canViewAttachments}">
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="LbTrigger"
+								data-href="{xen:link misc/lightbox}"><img 
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" class="LbImage" /></a>
+						<xen:elseif is="{$attachment.thumbnailUrl}" />
+							<a href="{xen:link attachments, $attachment}" target="_blank"><img
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" /></a>
+						<xen:else />
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="genericAttachment"></a>
+						</xen:if>
+					</div>
+			
+				</div>
+			</li>
+		</xen:foreach>
+	</ul>
+</div>
+
+<xen:comment><xen:require css="xenforo.css" /></xen:comment>]]></template>
+    <template title="gars_attached_files.css" version_id="1" version_string="0.0.1"><![CDATA[/* the attached files block is intended to appear like a bb code block */
+
+.attachedFiles
+{
+	{xen:property bbCodeBlock}
+}
+
+.messageList.withSidebar .attachedFiles
+{
+	margin-right: 0px;
+}
+
+	.attachedFiles .attachedFilesHeader
+	{
+		{xen:property bbCodeBlockType}
+		
+		padding: 4px 8px;
+	}
+
+	.attachedFiles .attachmentList
+	{
+		/* roughly the same as {xen:property bbCodeCode}
+	-xenforo-nomatch-background: rgba(255, 255, 255, .4) !important; with the monospacing stuff removed */
+		overflow: hidden; zoom: 1;		
+		padding: 10px 10px 10px 6px;
+		background: rgba(255, 255, 255, .4) !important;
+		border-radius: 0;
+	}
+
+		.attachment
+		{
+			float: left;
+			width: 20%;
+		}
+		
+		.attachment .boxModelFixer
+		{
+			padding: 5px;				
+			background-color: {xen:property contentBackground};
+			border: 0;
+			border-radius: 5px;	
+		}
+		
+			<xen:set var="$attachThumbSize">{xen:calc '{$xenOptions.attachmentThumbnailDimensions} / 2'}px</xen:set>
+		
+			.attachment .thumbnail
+			{
+				float: left;						
+				padding-right: 5px;
+				width: {$attachThumbSize};
+				height: {$attachThumbSize};
+			}
+			
+				.attachment .thumbnail .SquareThumb
+				{
+					width: {$attachThumbSize};
+					height: {$attachThumbSize};
+					border-radius: 3px;
+				}
+				
+				.attachment .thumbnail .genericAttachment
+				{
+					{xen:property genericAttachmentThumb}
+					
+					margin: {xen:calc '({$xenOptions.attachmentThumbnailDimensions} / 2 - {xen:property genericAttachmentThumb.height}) / 2'}px {xen:calc '({$xenOptions.attachmentThumbnailDimensions} / 2 - {xen:property genericAttachmentThumb.width}) / 2'}px !important;
+				}
+			
+		.attachment .attachmentInfo
+		{
+			white-space: nowrap;
+			overflow: hidden; zoom: 1;
+			font-size: 11px;
+			padding-left: 5px;
+		}
+
+.racasAttach { width: 300px; float: right; padding-bottom: 30px; }]]></template>
+    <template title="gars_message" version_id="1" version_string="0.0.1"><![CDATA[<xen:require css="message.css" />
+<xen:require css="bb_code.css" />
+<xen:require css="gars_message.css" />
+
+
+<li id="{$messageId}" class="message {xen:if $message.isDeleted, 'deleted'} {xen:if '{$message.is_admin} OR {$message.is_moderator}', 'staff'} {xen:if $message.isIgnored, ignored}" data-author="{$message.username}">
+
+<xen:if is="{$post.position} == 0">
+
+	<div class="glTAVmessageInfo">
+		<xen:if is="{$message.isNew}"><strong class="newIndicator"><span></span>{xen:phrase new}</strong></xen:if>
+		
+		<xen:if hascontent="true">
+			<ul class="messageNotices">
+				<xen:contentcheck>
+					<xen:hook name="message_notices" params="{xen:array 'message={$message}'}">
+						<xen:if is="{$message.warning_message}">
+							<li class="warningNotice"><span class="icon Tooltip" title="{xen:phrase warning}" data-tipclass="iconTip flipped"></span>{$message.warning_message}</li>
+						</xen:if>
+						<xen:if is="{$message.isDeleted}">
+							<li class="deletedNotice"><span class="icon Tooltip" title="{xen:phrase deleted}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_has_been_removed_from_public_view}</li>
+						<xen:elseif is="{$message.isModerated}" />
+							<li class="moderatedNotice"><span class="icon Tooltip" title="{xen:phrase awaiting_moderation}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal}</li>
+						</xen:if>
+						<xen:if is="{$message.isIgnored}">
+							<li>{xen:phrase you_are_ignoring_content_by_this_member} <a href="javascript:" class="jsOnly DisplayIgnoredContent">{xen:phrase show_ignored_content}</a></li>
+						</xen:if>
+					</xen:hook>
+				</xen:contentcheck>
+			</ul>
+		</xen:if>
+		<div class="racasAttach">{xen:raw $messageContentAfterTemplate}</div>
+		<xen:hook name="message_content" params="{xen:array 'message={$message}'}">
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText ugc baseHtml{xen:if $message.isIgnored, ' ignored'}">
+					<xen:include template="ad_message_body" />
+					<div class="glTAVContent">{xen:raw $message.messageHtml}</div>
+				</blockquote>
+			</article>
+			
+			<xen:comment>{xen:raw $messageContentAfterTemplate}</xen:comment>
+		</div>
+		</xen:hook>
+		
+		{xen:raw $messageAfterTemplate}
+		
+		<div id="likes-{$messageId} glTAVlikesSummary" ><xen:if is="{$message.likes}"><xen:include template="likes_summary" /></xen:if></div>
+	</div>
+	
+	<xen:include template="ad_message_below" />
+	
+</li>
+
+<xen:comment> Else go back to regular thread view </xen:comment>
+<xen:else />
+
+	<xen:include template="message_user_info">
+			<xen:map from="$message" to="$user" />
+	</xen:include>
+
+		<div class="messageInfo primaryContent">
+		<xen:if is="{$message.isNew}"><strong class="newIndicator"><span></span>{xen:phrase new}</strong></xen:if>
+		
+		<xen:if hascontent="true">
+			<ul class="messageNotices">
+				<xen:contentcheck>
+					<xen:hook name="message_notices" params="{xen:array 'message={$message}'}">
+						<xen:if is="{$message.warning_message}">
+							<li class="warningNotice"><span class="icon Tooltip" title="{xen:phrase warning}" data-tipclass="iconTip flipped"></span>{$message.warning_message}</li>
+						</xen:if>
+						<xen:if is="{$message.isDeleted}">
+							<li class="deletedNotice"><span class="icon Tooltip" title="{xen:phrase deleted}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_has_been_removed_from_public_view}</li>
+						<xen:elseif is="{$message.isModerated}" />
+							<li class="moderatedNotice"><span class="icon Tooltip" title="{xen:phrase awaiting_moderation}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal}</li>
+						</xen:if>
+						<xen:if is="{$message.isIgnored}">
+							<li>{xen:phrase you_are_ignoring_content_by_this_member} <a href="javascript:" class="jsOnly DisplayIgnoredContent">{xen:phrase show_ignored_content}</a></li>
+						</xen:if>
+					</xen:hook>
+				</xen:contentcheck>
+			</ul>
+		</xen:if>
+		
+		<xen:hook name="message_content" params="{xen:array 'message={$message}'}">
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText ugc baseHtml{xen:if $message.isIgnored, ' ignored'}">
+					<xen:include template="ad_message_body" />
+					{xen:raw $message.messageHtml}
+				</blockquote>
+			</article>
+			
+			{xen:raw $messageContentAfterTemplate}
+		</div>
+		</xen:hook>
+		
+		
+		<xen:if is="{$visitor.content_show_signature} && {$message.signature}">
+			<div class="baseHtml signature ugc{xen:if $message.isIgnored, ' ignored'}"><aside>{xen:raw $message.signatureHtml}</aside></div>
+		</xen:if>
+		
+		{xen:raw $messageAfterTemplate}
+		
+		<div id="likes-{$messageId}"><xen:if is="{$message.likes}"><xen:include template="likes_summary" /></xen:if></div>
+	</div>
+	
+	<xen:include template="ad_message_below" />
+	
+</li>
+
+</xen:if>]]></template>
+    <template title="gars_message.css" version_id="1" version_string="0.0.1"><![CDATA[<xen:if is="{$post.position} == 0">
+.message .glTAVmessageInfo { margin-left: 0 !important; float: left !important; width: 100%; }
+.message .glTAVsignature, .message .glTAVmessageMeta { clear: both; }
+.message .glTAVdark_postrating { clear: both; margin-left: 0 !important; }
+.glTAVContent { padding-bottom: 30px; }
+</xen:if>
+
+]]></template>
+    <template title="gars_strainType_sidebar_filter" version_id="1" version_string="0.0.1"><![CDATA[<xen:if hascontent="true">	
+	<xen:require css="sidebar_share_page.css" />
+	<div class="section infoBlock sharePage">
+		<div class="secondaryContent">
+			<h3>{xen:phrase gars_strainType_sidebar_filter}</h3>
+			<xen:contentcheck>
+			<form action="{xen:link 'forums', $forum}" method="post">
+				<div class="controlGroup">
+					<label for="ctrl_order"><p>{xen:phrase gars_strainType_sort_threads_by}:</p></label>
+					<select name="order" id="ctrl_order" class="textCtrl">
+						<option value="last_post_date" {xen:selected "{$order} == 'last_post_date'"}>{xen:phrase last_message_time}</option>
+						<option value="post_date" {xen:selected "{$order} == 'post_date'"}>{xen:phrase gars_strainType_thread_creation_time}</option>
+						<option value="title" {xen:selected "{$order} == 'title'"}>{xen:phrase title_alphabetical}</option>
+						<option value="reply_count" {xen:selected "{$order} == 'reply_count'"}>{xen:phrase number_of_replies}</option>
+						<option value="view_count" {xen:selected "{$order} == 'view_count'"}>{xen:phrase number_of_views}</option>
+						<option value="first_post_likes" {xen:selected "{$order} == 'first_post_likes'"}>{xen:phrase first_message_likes}</option>
+					</select>
+				</div>
+
+				<div class="controlGroup">
+					<label for="ctrl_direction"><p>{xen:phrase gars_strainType_order_threads_in}:</p></label>
+					<select name="direction" id="ctrl_direction" class="textCtrl">
+						<option value="desc" {xen:selected "{$orderDirection} == 'desc'"}>{xen:phrase descending_order}</option>
+						<option value="asc" {xen:selected "{$orderDirection} == 'asc'"}>{xen:phrase ascending_order}</option>
+					</select>
+				</div>
+				
+				<xen:if is="{$forum.prefixCache}">
+					<div class="controlGroup">
+						<label for="ctrl_prefix_id"><p>{xen:phrase prefix}:</p></label>
+						<select name="prefix_id" id="ctrl_prefix_id" class="textCtrl">
+							<option value="0" {xen:selected '!{$displayConditions.prefix_id}'}>({xen:phrase any})</option>
+							<xen:foreach loop="$forum.prefixCache" key="$prefixGroupId" value="$prefixes">
+								<xen:if is="{$prefixGroupId}">
+									<optgroup label="{xen:helper threadPrefixGroup, $prefixGroupId}">
+									<xen:foreach loop="$prefixes" value="$prefixId">
+										<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+									</xen:foreach>
+									</optgroup>
+								<xen:else />
+									<xen:foreach loop="$prefixes" value="$prefixId">
+										<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+									</xen:foreach>
+								</xen:if>
+							</xen:foreach>
+						</select>
+					</div>
+				</xen:if>
+
+				<div class="buttonGroup">
+					<input type="submit" class="button primary" value="{xen:phrase set_options}" />
+					<input type="reset" class="button" value="{xen:phrase cancel}" />
+				</div>
+				
+					<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+			</form>
+			</xen:contentcheck>
+		</div>
+	</div>
+</xen:if>]]></template>
+    <template title="gars_strainType_thread_list" version_id="1" version_string="0.0.1"><![CDATA[<xen:require css="discussion_list.css" />
+<xen:require js="js/xenforo/discussion_list.js" />
+<xen:require css="gars_thread_list.css" />
+
+<!-- sidebar -->
+<aside>
+	<div class="sidebar">
+		<xen:hook name="page_container_sidebar">
+		<xen:include template="ad_sidebar_top" />
+		<xen:include template="gars_strainType_sidebar_filter"></xen:include>
+		<xen:include template="sidebar_share_page">
+			<xen:set var="$url">{xen:link canonical:index}</xen:set>
+		</xen:include>
+		{xen:raw $sidebar}
+		<xen:include template="ad_sidebar_bottom" />
+		</xen:hook>
+	</div>
+</aside>
+
+<form action="{xen:link inline-mod/thread/switch}" method="post"
+	class="DiscussionList InlineModForm"
+	data-cookieName="threads"
+	data-controls="#InlineModControls"
+	data-imodOptions="#ModerationSelect option">
+	
+	<xen:if hascontent="true">
+		<div class="discussionListFilters secondaryContent">
+			<h3 class="filtersHeading">{xen:phrase filters}:</h3>
+			<dl class="pairsInline filterPairs">
+			<xen:contentcheck>
+			<xen:if is="{$displayConditions.prefix_id}">
+				<dt>{xen:phrase prefix}:</dt>
+				<dd><a href="{xen:link forums, $forum, '_params={$pageNavParams}', 'prefix_id='}" class="removeFilter Tooltip" title="{xen:phrase remove_filter}">{xen:helper threadPrefix, $displayConditions.prefix_id, escaped, ''} <span class="gadget">x</span></a></dd>
+			</xen:if>
+			</xen:contentcheck>
+			</dl>
+			<dl class="pairsInline removeAll">
+				<dt>{xen:phrase remove_all_filters}:</dt>
+				<dd><a href="{xen:link forums, $forum, 'order={$pageNavParams.order}', 'direction={$pageNavParams.direction}'}" class="removeAllFilters Tooltip" title="{xen:phrase remove_all_filters}">x</a></dd>
+			</dl>
+		</div>
+	</xen:if>
+
+	<dl class="sectionHeaders">
+		<dt class="posterAvatar"><a><span>{xen:phrase sort_by}:</span></a></dt>
+		<dd class="main">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.title}'}" class="title"><span>{xen:phrase gars_strainType_title}{xen:helper sortArrow, $order, $orderDirection, title}</span></a>
+			<!--<a href="{xen:link forums, $forum, '_params={$orderParams.post_date}'}" class="postDate"><span>{xen:phrase start_date}{xen:helper sortArrow, $order, $orderDirection, post_date}</span></a>-->
+		</dd>
+		<!--<dd class="stats">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.reply_count}'}" class="major"><span>{xen:phrase replies}{xen:helper sortArrow, $order, $orderDirection, reply_count}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.view_count}'}" class="minor"><span>{xen:phrase views}{xen:helper sortArrow, $order, $orderDirection, view_count}</span></a>
+		</dd>
+		<dd class="lastPost"><a href="{xen:link forums, $forum, '_params={$orderParams.last_post_date}'}"><span>{xen:phrase last_message}{xen:helper sortArrow, $order, $orderDirection, last_post_date}</span></a></dd>-->
+<dd><div class="linkGroup SelectionCountContainer">
+		<xen:comment><xen:include template="forum_view_legacy_controls" /></xen:comment>
+	</div></dd>
+	</dl>
+
+	<ol class="discussionListItems">
+	<xen:if is="{$stickyThreads} OR {$threads}">
+		<xen:set var="$showLastPageNumbers">1</xen:set>
+		<xen:set var="$linkPrefix">1</xen:set>
+	
+		<xen:hook name="thread_list_stickies">
+		<xen:foreach loop="$stickyThreads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:include template="ad_thread_list_below_stickies" />
+		
+		<xen:hook name="thread_list_threads">
+		<xen:foreach loop="$threads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:edithint template="thread_list_item_edit" />
+	<xen:else />
+		<li class="primaryContent">{xen:phrase gars_strainType_there_no_threads_to_display}</li>
+	</xen:if>
+	</ol>
+
+	<xen:if is="{$totalThreads} OR {$inlineModOptions}">
+		<div class="sectionFooter InlineMod SelectionCountContainer">
+			<xen:if is="{$totalThreads}"><span class="contentSummary">{xen:phrase gars_strainType_showing_threads_x_to_y_of_z, 'start={xen:number $threadStartOffset}', 'end={xen:number $threadEndOffset}', 'total={xen:number $totalThreads}'}</span></xen:if>
+
+			<xen:if is="{$inlineModOptions}">
+				<xen:include template="inline_mod_controls_thread" />
+			</xen:if>
+		</div>
+	</xen:if>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<xen:include template="preview_tooltip" />]]></template>
+    <template title="gars_thread_list.css" version_id="1" version_string="0.0.1"><![CDATA[.discussionListItems { overflow: hidden !important; width: 70% !important; clear: left; margin-top: 40px !important; }
+.discussionListItem { width: 100% !important; float: left !important; }
+.discussionList .stats { width: auto !important; }
+.sidebar { margin-top: 0px; clear: left !important; }
+.discussionList .sectionHeaders { width: 70% !important; float: left !important; margin-top: 5px !important; margin-bottom: 10px !important; padding-right: 10px !important; }
+
+.sectionFooter { clear: both; width: 70% !important; padding-right: 0 !important; }
+.sectionFooter a { margin-right: 10px !important } 
+.DiscussionListOptions { width: 70% !important; float: left; }
+#DiscussionListOptionsHandle { width: 70% !important; clear: both !important; }
+
+.discussionListItem .posterAvatar .avatar img { width: 48px !important; height: 48px !important; }
+.discussionListItem .posterAvatar .avatar.miniMe img { width: 16px !important; height: 16px !important; position: relative; left: 10px !important; }
+.discussionListItem:last-of-type { border-bottom: 1px solid rgba(22, 57, 51, .08) !important; }
+
+.discussionList .discussionListItemEdit { clear: left !important; }
+
+_.pageNavLinkGroup { float: left !important; width: 70% !important; padding-right: 15px !important; }
+.linkGroup a, .linkGroup .Popup { float: right !important; padding-right: 10px !important; }
+.linkGroup a.callToAction { padding-right: 0 !important; }
+.linkGroup { margin-right: -10px !important; }
+
+.LoggedIn .discussionListItem .titleText {
+margin-left: 5px !important;
+padding-left: 20px !important;
+}]]></template>
+  </templates>
+  <bb_code_media_sites/>
+  <template_modifications>
+    <modification title="attached_files add 1" template_title="attached_files" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[<xen:require css="attached_files.css" />
+
+<div class="attachedFiles">
+	<h4 class="attachedFilesHeader">{xen:phrase attached_files}:</h4>
+	<ul class="attachmentList SquareThumbs"
+		data-thumb-height="{xen:calc '{$xenOptions.attachmentThumbnailDimensions} / 2'}"
+		data-thumb-selector="div.thumbnail > a">
+		<xen:foreach loop="$post.attachments" value="$attachment">
+			<li class="attachment{xen:if {$attachment.thumbnailUrl}, ' image'}" title="{$attachment.filename}">
+				<div class="boxModelFixer primaryContent">
+					
+					<div class="thumbnail">
+						<xen:if is="{$attachment.thumbnailUrl} AND {$canViewAttachments}">
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="LbTrigger"
+								data-href="{xen:link misc/lightbox}"><img 
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" class="LbImage" /></a>
+						<xen:elseif is="{$attachment.thumbnailUrl}" />
+							<a href="{xen:link attachments, $attachment}" target="_blank"><img
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" /></a>
+						<xen:else />
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="genericAttachment"></a>
+						</xen:if>
+					</div>
+					
+					<div class="attachmentInfo pairsJustified">
+						<h6 class="filename"><a href="{xen:link attachments, $attachment}" target="_blank">{$attachment.filename}</a></h6>
+						<dl><dt>{xen:phrase file_size}:</dt> <dd>{xen:number $attachment.file_size, size}</dd></dl>
+						<dl><dt>{xen:phrase views}:</dt> <dd>{xen:number $attachment.view_count}</dd></dl>
+					</div>
+				</div>
+			</li>
+		</xen:foreach>
+	</ul>
+</div>
+
+<xen:comment><xen:require css="xenforo.css" /></xen:comment>]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId}) OR in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+    <xen:include template="gars_attached_files" />
+<xen:else />
+
+<xen:require css="attached_files.css" />
+
+<div class="attachedFiles">
+	<h4 class="attachedFilesHeader">{xen:phrase attached_files}:</h4>
+	<ul class="attachmentList SquareThumbs"
+		data-thumb-height="{xen:calc '{$xenOptions.attachmentThumbnailDimensions} / 2'}"
+		data-thumb-selector="div.thumbnail > a">
+		<xen:foreach loop="$post.attachments" value="$attachment">
+			<li class="attachment{xen:if {$attachment.thumbnailUrl}, ' image'}" title="{$attachment.filename}">
+				<div class="boxModelFixer primaryContent">
+					
+					<div class="thumbnail">
+						<xen:if is="{$attachment.thumbnailUrl} AND {$canViewAttachments}">
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="LbTrigger"
+								data-href="{xen:link misc/lightbox}"><img 
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" class="LbImage" /></a>
+						<xen:elseif is="{$attachment.thumbnailUrl}" />
+							<a href="{xen:link attachments, $attachment}" target="_blank"><img
+								src="{$attachment.thumbnailUrl}" alt="{$attachment.filename}" /></a>
+						<xen:else />
+							<a href="{xen:link attachments, $attachment}" target="_blank" class="genericAttachment"></a>
+						</xen:if>
+					</div>
+					
+					<div class="attachmentInfo pairsJustified">
+						<h6 class="filename"><a href="{xen:link attachments, $attachment}" target="_blank">{$attachment.filename}</a></h6>
+						<dl><dt>{xen:phrase file_size}:</dt> <dd>{xen:number $attachment.file_size, size}</dd></dl>
+						<dl><dt>{xen:phrase views}:</dt> <dd>{xen:number $attachment.view_count}</dd></dl>
+					</div>
+				</div>
+			</li>
+		</xen:foreach>
+	</ul>
+</div>
+
+<xen:comment><xen:require css="xenforo.css" /></xen:comment>
+
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="dark_postrating ADD 1" template_title="dark_postrating" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="Modified dark_postrating class to clear first post" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[<div class="dark_postrating {xen:if $postrating_has_ratings, 'likesSummary secondaryContent'}">]]></search_value>
+      <replace_value><![CDATA[<xen:if is="{$post.position} == 0 AND in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId}) OR {$post.position} == 0 AND in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+<div class="glTAVdark_postrating {xen:if $postrating_has_ratings, 'likesSummary secondaryContent'}">
+<xen:else />
+<div class="dark_postrating {xen:if $postrating_has_ratings, 'likesSummary secondaryContent'}">
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="message INSERT gars_message" template_title="message" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="Inserts gars_message template" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[<xen:require css="message.css" />
+<xen:require css="bb_code.css" />
+
+<li id="{$messageId}" class="message {xen:if $message.isDeleted, 'deleted'} {xen:if '{$message.is_admin} OR {$message.is_moderator}', 'staff'} {xen:if $message.isIgnored, ignored}" data-author="{$message.username}">
+
+	<xen:include template="message_user_info">
+		<xen:map from="$message" to="$user" />
+	</xen:include>
+
+	<div class="messageInfo primaryContent">
+		<xen:if is="{$message.isNew}"><strong class="newIndicator"><span></span>{xen:phrase new}</strong></xen:if>
+		
+		<xen:if hascontent="true">
+			<ul class="messageNotices">
+				<xen:contentcheck>
+					<xen:hook name="message_notices" params="{xen:array 'message={$message}'}">
+						<xen:if is="{$message.warning_message}">
+							<li class="warningNotice"><span class="icon Tooltip" title="{xen:phrase warning}" data-tipclass="iconTip flipped"></span>{$message.warning_message}</li>
+						</xen:if>
+						<xen:if is="{$message.isDeleted}">
+							<li class="deletedNotice"><span class="icon Tooltip" title="{xen:phrase deleted}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_has_been_removed_from_public_view}</li>
+						<xen:elseif is="{$message.isModerated}" />
+							<li class="moderatedNotice"><span class="icon Tooltip" title="{xen:phrase awaiting_moderation}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal}</li>
+						</xen:if>
+						<xen:if is="{$message.isIgnored}">
+							<li>{xen:phrase you_are_ignoring_content_by_this_member} <a href="javascript:" class="jsOnly DisplayIgnoredContent">{xen:phrase show_ignored_content}</a></li>
+						</xen:if>
+					</xen:hook>
+				</xen:contentcheck>
+			</ul>
+		</xen:if>
+		
+		<xen:hook name="message_content" params="{xen:array 'message={$message}'}">
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText ugc baseHtml{xen:if $message.isIgnored, ' ignored'}">
+					<xen:include template="ad_message_body" />
+					{xen:raw $message.messageHtml}
+				</blockquote>
+			</article>
+			
+			{xen:raw $messageContentAfterTemplate}
+		</div>
+		</xen:hook>
+		
+		
+		<xen:if is="{$visitor.content_show_signature} && {$message.signature}">
+			<div class="baseHtml signature ugc{xen:if $message.isIgnored, ' ignored'}"><aside>{xen:raw $message.signatureHtml}</aside></div>
+		</xen:if>
+		
+		{xen:raw $messageAfterTemplate}
+		
+		<div id="likes-{$messageId}"><xen:if is="{$message.likes}"><xen:include template="likes_summary" /></xen:if></div>
+	</div>
+	
+	<xen:include template="ad_message_below" />
+	
+</li>]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId}) OR in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+	<xen:include template="gars_message" />
+<xen:else />
+
+<xen:require css="message.css" />
+<xen:require css="bb_code.css" />
+
+<li id="{$messageId}" class="message {xen:if $message.isDeleted, 'deleted'} {xen:if '{$message.is_admin} OR {$message.is_moderator}', 'staff'} {xen:if $message.isIgnored, ignored}" data-author="{$message.username}">
+
+<xen:include template="message_user_info">
+		<xen:map from="$message" to="$user" />
+	</xen:include>
+
+
+	<div class="messageInfo primaryContent">
+		<xen:if is="{$message.isNew}"><strong class="newIndicator"><span></span>{xen:phrase new}</strong></xen:if>
+		
+		<xen:if hascontent="true">
+			<ul class="messageNotices">
+				<xen:contentcheck>
+					<xen:hook name="message_notices" params="{xen:array 'message={$message}'}">
+						<xen:if is="{$message.warning_message}">
+							<li class="warningNotice"><span class="icon Tooltip" title="{xen:phrase warning}" data-tipclass="iconTip flipped"></span>{$message.warning_message}</li>
+						</xen:if>
+						<xen:if is="{$message.isDeleted}">
+							<li class="deletedNotice"><span class="icon Tooltip" title="{xen:phrase deleted}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_has_been_removed_from_public_view}</li>
+						<xen:elseif is="{$message.isModerated}" />
+							<li class="moderatedNotice"><span class="icon Tooltip" title="{xen:phrase awaiting_moderation}" data-tipclass="iconTip flipped"></span>{xen:phrase this_message_is_awaiting_moderator_approval_and_is_invisible_to_normal}</li>
+						</xen:if>
+						<xen:if is="{$message.isIgnored}">
+							<li>{xen:phrase you_are_ignoring_content_by_this_member} <a href="javascript:" class="jsOnly DisplayIgnoredContent">{xen:phrase show_ignored_content}</a></li>
+						</xen:if>
+					</xen:hook>
+				</xen:contentcheck>
+			</ul>
+		</xen:if>
+		
+		<xen:hook name="message_content" params="{xen:array 'message={$message}'}">
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText ugc baseHtml{xen:if $message.isIgnored, ' ignored'}">
+					<xen:include template="ad_message_body" />
+					{xen:raw $message.messageHtml}
+				</blockquote>
+			</article>
+			
+			{xen:raw $messageContentAfterTemplate}
+		</div>
+		</xen:hook>
+		
+		
+		<xen:if is="{$visitor.content_show_signature} && {$message.signature}">
+			<div class="baseHtml signature ugc{xen:if $message.isIgnored, ' ignored'}"><aside>{xen:raw $message.signatureHtml}</aside></div>
+		</xen:if>
+		
+		{xen:raw $messageAfterTemplate}
+		
+		<div id="likes-{$messageId}"><xen:if is="{$message.likes}"><xen:include template="likes_summary" /></xen:if></div>
+	</div>
+	
+	<xen:include template="ad_message_below" />
+	
+</li>
+
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="post_new_thread phrases" template_title="forum_view" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="If conditionals for post_new_thread phrases" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[{xen:phrase post_new_thread}]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+	{xen:phrase gars_articleType_post_new_thread}
+<xen:elseif is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId})" />
+	{xen:phrase gars_strainType_post_new_thread}
+<xen:else />
+	{xen:phrase post_new_thread}
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="selected count hide" template_title="forum_view" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[	<div class="linkGroup SelectionCountContainer">
+		<xen:comment><xen:include template="forum_view_legacy_controls" /></xen:comment>
+	</div>]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+	<!-- selection count hide -->
+<xen:elseif is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId})" />
+	<!-- selection count hide -->
+<xen:else />
+	<div class="linkGroup SelectionCountContainer">
+		<xen:comment><xen:include template="forum_view_legacy_controls" /></xen:comment>
+	</div>
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="thread_list switch" template_title="thread_list" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="If conditionals for thread_list template switch" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[<xen:require css="discussion_list.css" />
+<xen:require js="js/xenforo/discussion_list.js" />
+
+<form action="{xen:link inline-mod/thread/switch}" method="post"
+	class="DiscussionList InlineModForm"
+	data-cookieName="threads"
+	data-controls="#InlineModControls"
+	data-imodOptions="#ModerationSelect option">
+	
+	<xen:if hascontent="true">
+		<div class="discussionListFilters secondaryContent">
+			<h3 class="filtersHeading">{xen:phrase filters}:</h3>
+			<dl class="pairsInline filterPairs">
+			<xen:contentcheck>
+			<xen:if is="{$displayConditions.prefix_id}">
+				<dt>{xen:phrase prefix}:</dt>
+				<dd><a href="{xen:link forums, $forum, '_params={$pageNavParams}', 'prefix_id='}" class="removeFilter Tooltip" title="{xen:phrase remove_filter}">{xen:helper threadPrefix, $displayConditions.prefix_id, escaped, ''} <span class="gadget">x</span></a></dd>
+			</xen:if>
+			</xen:contentcheck>
+			</dl>
+			<dl class="pairsInline removeAll">
+				<dt>{xen:phrase remove_all_filters}:</dt>
+				<dd><a href="{xen:link forums, $forum, 'order={$pageNavParams.order}', 'direction={$pageNavParams.direction}'}" class="removeAllFilters Tooltip" title="{xen:phrase remove_all_filters}">x</a></dd>
+			</dl>
+		</div>
+	</xen:if>
+
+	<dl class="sectionHeaders">
+		<dt class="posterAvatar"><a><span>{xen:phrase sort_by}:</span></a></dt>
+		<dd class="main">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.title}'}" class="title"><span>{xen:phrase title}{xen:helper sortArrow, $order, $orderDirection, title}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.post_date}'}" class="postDate"><span>{xen:phrase start_date}{xen:helper sortArrow, $order, $orderDirection, post_date}</span></a>
+		</dd>
+		<dd class="stats">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.reply_count}'}" class="major"><span>{xen:phrase replies}{xen:helper sortArrow, $order, $orderDirection, reply_count}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.view_count}'}" class="minor"><span>{xen:phrase views}{xen:helper sortArrow, $order, $orderDirection, view_count}</span></a>
+		</dd>
+		<dd class="lastPost"><a href="{xen:link forums, $forum, '_params={$orderParams.last_post_date}'}"><span>{xen:phrase last_message}{xen:helper sortArrow, $order, $orderDirection, last_post_date}</span></a></dd>
+	</dl>
+
+	<ol class="discussionListItems">
+	<xen:if is="{$stickyThreads} OR {$threads}">
+		<xen:set var="$showLastPageNumbers">1</xen:set>
+		<xen:set var="$linkPrefix">1</xen:set>
+	
+		<xen:hook name="thread_list_stickies">
+		<xen:foreach loop="$stickyThreads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:include template="ad_thread_list_below_stickies" />
+		
+		<xen:hook name="thread_list_threads">
+		<xen:foreach loop="$threads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:edithint template="thread_list_item_edit" />
+	<xen:else />
+		<li class="primaryContent">{xen:phrase there_no_threads_to_display}</li>
+	</xen:if>
+	</ol>
+
+	<xen:if is="{$totalThreads} OR {$inlineModOptions}">
+		<div class="sectionFooter InlineMod SelectionCountContainer">
+			<xen:if is="{$totalThreads}"><span class="contentSummary">{xen:phrase showing_threads_x_to_y_of_z, 'start={xen:number $threadStartOffset}', 'end={xen:number $threadEndOffset}', 'total={xen:number $totalThreads}'}</span></xen:if>
+
+			<xen:if is="{$inlineModOptions}">
+				<xen:include template="inline_mod_controls_thread" />
+			</xen:if>
+		</div>
+	</xen:if>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<h3 id="DiscussionListOptionsHandle" class="JsOnly"><a href="#">{xen:phrase thread_display_options}</a></h3>
+
+<form action="{xen:link 'forums', $forum}" method="post" class="DiscussionListOptions secondaryContent">
+
+	<xen:hook name="thread_list_options">
+	<div class="controlGroup">
+		<label for="ctrl_order">{xen:phrase sort_threads_by}:</label>
+		<select name="order" id="ctrl_order" class="textCtrl">
+			<option value="last_post_date" {xen:selected "{$order} == 'last_post_date'"}>{xen:phrase last_message_time}</option>
+			<option value="post_date" {xen:selected "{$order} == 'post_date'"}>{xen:phrase thread_creation_time}</option>
+			<option value="title" {xen:selected "{$order} == 'title'"}>{xen:phrase title_alphabetical}</option>
+			<option value="reply_count" {xen:selected "{$order} == 'reply_count'"}>{xen:phrase number_of_replies}</option>
+			<option value="view_count" {xen:selected "{$order} == 'view_count'"}>{xen:phrase number_of_views}</option>
+			<option value="first_post_likes" {xen:selected "{$order} == 'first_post_likes'"}>{xen:phrase first_message_likes}</option>
+		</select>
+	</div>
+
+	<div class="controlGroup">
+		<label for="ctrl_direction">{xen:phrase order_threads_in}:</label>
+		<select name="direction" id="ctrl_direction" class="textCtrl">
+			<option value="desc" {xen:selected "{$orderDirection} == 'desc'"}>{xen:phrase descending_order}</option>
+			<option value="asc" {xen:selected "{$orderDirection} == 'asc'"}>{xen:phrase ascending_order}</option>
+		</select>
+	</div>
+	
+	<xen:if is="{$forum.prefixCache}">
+		<div class="controlGroup">
+			<label for="ctrl_prefix_id">{xen:phrase prefix}:</label>
+			<select name="prefix_id" id="ctrl_prefix_id" class="textCtrl">
+				<option value="0" {xen:selected '!{$displayConditions.prefix_id}'}>({xen:phrase any})</option>
+				<xen:foreach loop="$forum.prefixCache" key="$prefixGroupId" value="$prefixes">
+					<xen:if is="{$prefixGroupId}">
+						<optgroup label="{xen:helper threadPrefixGroup, $prefixGroupId}">
+						<xen:foreach loop="$prefixes" value="$prefixId">
+							<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+						</xen:foreach>
+						</optgroup>
+					<xen:else />
+						<xen:foreach loop="$prefixes" value="$prefixId">
+							<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+						</xen:foreach>
+					</xen:if>
+				</xen:foreach>
+			</select>
+		</div>
+	</xen:if>
+
+	<div class="buttonGroup">
+		<input type="submit" class="button primary" value="{xen:phrase set_options}" />
+		<input type="reset" class="button" value="{xen:phrase cancel}" />
+	</div>
+	</xen:hook>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<xen:include template="preview_tooltip" />]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId})">
+    <xen:include template="gars_strainType_thread_list" />
+<xen:elseif is="in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})" />
+    <xen:include template="gars_articleType_thread_list" />
+<xen:else />
+
+<xen:require css="discussion_list.css" />
+<xen:require js="js/xenforo/discussion_list.js" />
+
+<form action="{xen:link inline-mod/thread/switch}" method="post"
+	class="DiscussionList InlineModForm"
+	data-cookieName="threads"
+	data-controls="#InlineModControls"
+	data-imodOptions="#ModerationSelect option">
+	
+	<xen:if hascontent="true">
+		<div class="discussionListFilters secondaryContent">
+			<h3 class="filtersHeading">{xen:phrase filters}:</h3>
+			<dl class="pairsInline filterPairs">
+			<xen:contentcheck>
+			<xen:if is="{$displayConditions.prefix_id}">
+				<dt>{xen:phrase prefix}:</dt>
+				<dd><a href="{xen:link forums, $forum, '_params={$pageNavParams}', 'prefix_id='}" class="removeFilter Tooltip" title="{xen:phrase remove_filter}">{xen:helper threadPrefix, $displayConditions.prefix_id, escaped, ''} <span class="gadget">x</span></a></dd>
+			</xen:if>
+			</xen:contentcheck>
+			</dl>
+			<dl class="pairsInline removeAll">
+				<dt>{xen:phrase remove_all_filters}:</dt>
+				<dd><a href="{xen:link forums, $forum, 'order={$pageNavParams.order}', 'direction={$pageNavParams.direction}'}" class="removeAllFilters Tooltip" title="{xen:phrase remove_all_filters}">x</a></dd>
+			</dl>
+		</div>
+	</xen:if>
+
+	<dl class="sectionHeaders">
+		<dt class="posterAvatar"><a><span>{xen:phrase sort_by}:</span></a></dt>
+		<dd class="main">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.title}'}" class="title"><span>{xen:phrase title}{xen:helper sortArrow, $order, $orderDirection, title}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.post_date}'}" class="postDate"><span>{xen:phrase start_date}{xen:helper sortArrow, $order, $orderDirection, post_date}</span></a>
+		</dd>
+		<dd class="stats">
+			<a href="{xen:link forums, $forum, '_params={$orderParams.reply_count}'}" class="major"><span>{xen:phrase replies}{xen:helper sortArrow, $order, $orderDirection, reply_count}</span></a>
+			<a href="{xen:link forums, $forum, '_params={$orderParams.view_count}'}" class="minor"><span>{xen:phrase views}{xen:helper sortArrow, $order, $orderDirection, view_count}</span></a>
+		</dd>
+		<dd class="lastPost"><a href="{xen:link forums, $forum, '_params={$orderParams.last_post_date}'}"><span>{xen:phrase last_message}{xen:helper sortArrow, $order, $orderDirection, last_post_date}</span></a></dd>
+	</dl>
+
+	<ol class="discussionListItems">
+	<xen:if is="{$stickyThreads} OR {$threads}">
+		<xen:set var="$showLastPageNumbers">1</xen:set>
+		<xen:set var="$linkPrefix">1</xen:set>
+	
+		<xen:hook name="thread_list_stickies">
+		<xen:foreach loop="$stickyThreads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:include template="ad_thread_list_below_stickies" />
+		
+		<xen:hook name="thread_list_threads">
+		<xen:foreach loop="$threads" value="$thread">
+			<xen:include template="thread_list_item" />
+		</xen:foreach>
+		</xen:hook>
+		
+		<xen:edithint template="thread_list_item_edit" />
+	<xen:else />
+		<li class="primaryContent">{xen:phrase there_no_threads_to_display}</li>
+	</xen:if>
+	</ol>
+
+	<xen:if is="{$totalThreads} OR {$inlineModOptions}">
+		<div class="sectionFooter InlineMod SelectionCountContainer">
+			<xen:if is="{$totalThreads}"><span class="contentSummary">{xen:phrase showing_threads_x_to_y_of_z, 'start={xen:number $threadStartOffset}', 'end={xen:number $threadEndOffset}', 'total={xen:number $totalThreads}'}</span></xen:if>
+
+			<xen:if is="{$inlineModOptions}">
+				<xen:include template="inline_mod_controls_thread" />
+			</xen:if>
+		</div>
+	</xen:if>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<h3 id="DiscussionListOptionsHandle" class="JsOnly"><a href="#">{xen:phrase thread_display_options}</a></h3>
+
+<form action="{xen:link 'forums', $forum}" method="post" class="DiscussionListOptions secondaryContent">
+
+	<xen:hook name="thread_list_options">
+	<div class="controlGroup">
+		<label for="ctrl_order">{xen:phrase sort_threads_by}:</label>
+		<select name="order" id="ctrl_order" class="textCtrl">
+			<option value="last_post_date" {xen:selected "{$order} == 'last_post_date'"}>{xen:phrase last_message_time}</option>
+			<option value="post_date" {xen:selected "{$order} == 'post_date'"}>{xen:phrase thread_creation_time}</option>
+			<option value="title" {xen:selected "{$order} == 'title'"}>{xen:phrase title_alphabetical}</option>
+			<option value="reply_count" {xen:selected "{$order} == 'reply_count'"}>{xen:phrase number_of_replies}</option>
+			<option value="view_count" {xen:selected "{$order} == 'view_count'"}>{xen:phrase number_of_views}</option>
+			<option value="first_post_likes" {xen:selected "{$order} == 'first_post_likes'"}>{xen:phrase first_message_likes}</option>
+		</select>
+	</div>
+
+	<div class="controlGroup">
+		<label for="ctrl_direction">{xen:phrase order_threads_in}:</label>
+		<select name="direction" id="ctrl_direction" class="textCtrl">
+			<option value="desc" {xen:selected "{$orderDirection} == 'desc'"}>{xen:phrase descending_order}</option>
+			<option value="asc" {xen:selected "{$orderDirection} == 'asc'"}>{xen:phrase ascending_order}</option>
+		</select>
+	</div>
+	
+	<xen:if is="{$forum.prefixCache}">
+		<div class="controlGroup">
+			<label for="ctrl_prefix_id">{xen:phrase prefix}:</label>
+			<select name="prefix_id" id="ctrl_prefix_id" class="textCtrl">
+				<option value="0" {xen:selected '!{$displayConditions.prefix_id}'}>({xen:phrase any})</option>
+				<xen:foreach loop="$forum.prefixCache" key="$prefixGroupId" value="$prefixes">
+					<xen:if is="{$prefixGroupId}">
+						<optgroup label="{xen:helper threadPrefixGroup, $prefixGroupId}">
+						<xen:foreach loop="$prefixes" value="$prefixId">
+							<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+						</xen:foreach>
+						</optgroup>
+					<xen:else />
+						<xen:foreach loop="$prefixes" value="$prefixId">
+							<option value="{$prefixId}" {xen:selected '{$displayConditions.prefix_id} == {$prefixId}'}>{xen:helper threadPrefix, $prefixId, escaped, ''}</option>
+						</xen:foreach>
+					</xen:if>
+				</xen:foreach>
+			</select>
+		</div>
+	</xen:if>
+
+	<div class="buttonGroup">
+		<input type="submit" class="button primary" value="{xen:phrase set_options}" />
+		<input type="reset" class="button" value="{xen:phrase cancel}" />
+	</div>
+	</xen:hook>
+
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>
+
+<xen:include template="preview_tooltip" />
+
+</xen:if>]]></replace_value>
+    </modification>
+    <modification title="thread_list_item REMOVE lastpost info" template_title="thread_list_item" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[	<div class="listBlock stats pairsJustified" title="{xen:phrase members_who_liked_first_message}: {xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.first_post_likes}}">
+		<dl class="major"><dt>{xen:phrase replies}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.reply_count}}</dd></dl>
+		<dl class="minor"><dt>{xen:phrase views}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.view_count}}</dd></dl>
+	</div>
+
+	<div class="listBlock lastPost">
+		<xen:if is="{$thread.isRedirect}">
+			<div class="lastPostInfo">{xen:phrase n_a}</div>
+		<xen:else />
+			<dl class="lastPostInfo">
+				<dt><xen:if is="{xen:helper isIgnored, $thread.last_post_user_id}">{xen:phrase ignored_member}<xen:else /><xen:username user="$thread.lastPostInfo" /></xen:if></dt>
+				<dd class="muted"><a{xen:if '{$visitor.user_id}', ' href="{xen:link posts, $thread.lastPostInfo}" title="{xen:phrase go_to_last_message}"'} class="dateTime"><xen:datetime time="$thread.lastPostInfo.post_date" /></a></dd>
+			</dl>
+		</xen:if>
+	</div>]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId}) OR in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+
+		<!--
+			<div class="listBlock stats pairsJustified" title="{xen:phrase members_who_liked_first_message}: {xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.first_post_likes}}">
+				<dl class="major"><dt>{xen:phrase replies}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.reply_count}}</dd></dl>
+				<dl class="minor"><dt>{xen:phrase views}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.view_count}}</dd></dl>
+			</div>
+
+			<div class="listBlock lastPost">
+				<xen:if is="{$thread.isRedirect}">
+					<div class="lastPostInfo">{xen:phrase n_a}</div>
+				<xen:else />
+					<dl class="lastPostInfo">
+						<dt><xen:if is="{xen:helper isIgnored, $thread.last_post_user_id}">{xen:phrase ignored_member}<xen:else /><xen:username user="$thread.lastPostInfo" /></xen:if></dt>
+						<dd class="muted"><a{xen:if '{$visitor.user_id}', ' href="{xen:link posts, $thread.lastPostInfo}" title="{xen:phrase go_to_last_message}"'} class="dateTime"><xen:datetime time="$thread.lastPostInfo.post_date" /></a></dd>
+					</dl>
+				</xen:if>
+			</div>
+		-->
+
+	<xen:else />
+
+		<div class="listBlock stats pairsJustified" title="{xen:phrase members_who_liked_first_message}: {xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.first_post_likes}}">
+			<dl class="major"><dt>{xen:phrase replies}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.reply_count}}</dd></dl>
+			<dl class="minor"><dt>{xen:phrase views}:</dt> <dd>{xen:if $thread.isRedirect, '&ndash;', {xen:number $thread.view_count}}</dd></dl>
+		</div>
+
+		<div class="listBlock lastPost">
+			<xen:if is="{$thread.isRedirect}">
+				<div class="lastPostInfo">{xen:phrase n_a}</div>
+			<xen:else />
+				<dl class="lastPostInfo">
+					<dt><xen:if is="{xen:helper isIgnored, $thread.last_post_user_id}">{xen:phrase ignored_member}<xen:else /><xen:username user="$thread.lastPostInfo" /></xen:if></dt>
+					<dd class="muted"><a{xen:if '{$visitor.user_id}', ' href="{xen:link posts, $thread.lastPostInfo}" title="{xen:phrase go_to_last_message}"'} class="dateTime"><xen:datetime time="$thread.lastPostInfo.post_date" /></a></dd>
+				</dl>
+			</xen:if>
+		</div>
+
+	</xen:if>]]></replace_value>
+    </modification>
+    <modification title="thread_list_item REMOVE user info" template_title="thread_list_item" execute_order="10" modification_type="str_replace" callback_class="" callback_method="" description="Hides user information from under thread title" version_id="1" version_string="0.0.1" active="1">
+      <search_value><![CDATA[				<div class="posterDate muted">
+					<xen:username user="$thread" title="{xen:phrase thread_starter}" />,
+					<a{xen:if {$visitor.user_id}, ' href="{xen:link threads, $thread}"'} class="faint"><xen:datetime time="$thread.post_date" title="{xen:if {$visitor.user_id}, '{xen:phrase go_to_first_message_in_thread}'}" /></a><xen:if is="{$showForumLink}">,
+					<a href="{xen:link forums, $thread.forum}" class="forumLink">{$thread.forum.title}</a></xen:if>
+
+					<xen:if is="{$showLastPageNumbers} AND {$thread.lastPageNumbers}">
+						<span class="itemPageNav">
+							<span>...</span>
+							<xen:foreach loop="$thread.lastPageNumbers" value="$pageNumber">
+								<a href="{xen:link threads, $thread, 'page={$pageNumber}'}">{$pageNumber}</a>
+							</xen:foreach>
+						</span>
+					</xen:if>
+				</div>]]></search_value>
+      <replace_value><![CDATA[<xen:if is="in_array({$forum.node_id}, {$xenOptions.gars_strainType_nodeId}) OR in_array({$forum.node_id}, {$xenOptions.gars_articleType_nodeId})">
+					<!--
+						<div class="posterDate muted">
+							<xen:username user="$thread" title="{xen:phrase thread_starter}" />,
+							<a{xen:if {$visitor.user_id}, ' href="{xen:link threads, $thread}"'} class="faint"><xen:datetime time="$thread.post_date" title="{xen:if {$visitor.user_id}, '{xen:phrase go_to_first_message_in_thread}'}" /></a><xen:if is="{$showForumLink}">,
+							<a href="{xen:link forums, $thread.forum}" class="forumLink">{$thread.forum.title}</a></xen:if>
+
+							<xen:if is="{$showLastPageNumbers} AND {$thread.lastPageNumbers}">
+								<span class="itemPageNav">
+									<span>...</span>
+									<xen:foreach loop="$thread.lastPageNumbers" value="$pageNumber">
+										<a href="{xen:link threads, $thread, 'page={$pageNumber}'}">{$pageNumber}</a>
+									</xen:foreach>
+								</span>
+							</xen:if>
+						</div>
+					-->
+
+				<xen:else />
+
+					<div class="posterDate muted">
+						<xen:username user="$thread" title="{xen:phrase thread_starter}" />,
+						<a{xen:if {$visitor.user_id}, ' href="{xen:link threads, $thread}"'} class="faint"><xen:datetime time="$thread.post_date" title="{xen:if {$visitor.user_id}, '{xen:phrase go_to_first_message_in_thread}'}" /></a><xen:if is="{$showForumLink}">,
+						<a href="{xen:link forums, $thread.forum}" class="forumLink">{$thread.forum.title}</a></xen:if>
+
+						<xen:if is="{$showLastPageNumbers} AND {$thread.lastPageNumbers}">
+							<span class="itemPageNav">
+								<span>...</span>
+								<xen:foreach loop="$thread.lastPageNumbers" value="$pageNumber">
+									<a href="{xen:link threads, $thread, 'page={$pageNumber}'}">{$pageNumber}</a>
+								</xen:foreach>
+							</span>
+						</xen:if>
+					</div>
+
+				</xen:if>]]></replace_value>
+    </modification>
+  </template_modifications>
+</addon>
